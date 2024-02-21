@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { bearerTokenInterceptor } from '../core/interceptors/bearer-token.interceptor';
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -14,7 +15,8 @@ import { bearerTokenInterceptor } from '../core/interceptors/bearer-token.interc
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   providers: [
     provideHttpClient(withInterceptors([bearerTokenInterceptor]))

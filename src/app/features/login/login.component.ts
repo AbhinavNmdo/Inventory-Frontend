@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IApiResponce, ILoginUser } from '../../core/interfaces/login';
 import { UserLoginService } from '../../core/services/user-login.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
+import { environment } from '../../enviornments/enviornment';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,11 @@ export class LoginComponent {
 
   constructor (
     private userLoginService: UserLoginService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle(`Login | ${environment.projectName}`)
+  }
 
   loginUser:FormGroup<ILoginUser> = new FormGroup<ILoginUser>({
     username: new FormControl('abhaynam22', [Validators.required]),
