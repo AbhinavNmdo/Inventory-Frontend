@@ -27,7 +27,7 @@ export class LoginComponent {
   });
 
   loginUserCall () {
-    this.userLoginService.userLogin(this.loginUser.value).subscribe((res:any) => {
+    this.userLoginService.userLogin(this.loginUser.value).subscribe((res:IApiResponce) => {
       if (res.status == 200) {
         localStorage.setItem('ang-inv-user', JSON.stringify(res.data));
         this.router.navigateByUrl('admin');
@@ -35,7 +35,6 @@ export class LoginComponent {
         alert(res.message);
       }
     }, errors => {
-      console.log(errors)
       alert('Something went wrong');
     })
   }

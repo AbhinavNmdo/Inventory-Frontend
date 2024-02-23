@@ -13,7 +13,7 @@
                         <input type="username" name="username" id="username" class="form-input" placeholder="abhaynam22"
                             required="" formControlName="username">
                         <span class="error-text"
-                            *ngIf="loginUser.controls.username.invalid && loginUser.controls.username.touched">Please
+                            *ngIf="loginUser.get('username')?.invalid && loginUser.get('username')?.touched">Please
                             enter valid username</span>
                     </div>
                     <div>
@@ -22,7 +22,7 @@
                         <input type="password" name="password" id="password" placeholder="••••••••" class="form-input"
                             required="" formControlName="password">
                         <span class="error-text"
-                            *ngIf="loginUser.controls.password.invalid && loginUser.controls.password.touched">Please
+                            *ngIf="loginUser.get('password')?.invalid && loginUser.get('password')?.touched">Please
                             enter valid username</span>
                     </div>
                     <button type="submit" [disabled]="loginUser.invalid" class="btn-primary">Sign

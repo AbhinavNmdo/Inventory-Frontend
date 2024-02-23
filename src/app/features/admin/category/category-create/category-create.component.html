@@ -1,11 +1,14 @@
 <h1 class="text-white text-4xl font-bold">Create Category</h1>
 
-<div class="card">
+<form [formGroup]="storeCategory" class="card">
     <div class="card-body mt-0">
-        
+        <div *ngFor="let category of ">
+            <label for="" class="form-label">Category Name</label>
+            <input type="text" class="form-input" id="">
+        </div>
     </div>
     <div class="card-footer">
         <button type="submit" class="btn-primary">Submit</button>
         <button type="button" class="btn-secondary">Add More</button>
     </div>
-</div>
+</form>
