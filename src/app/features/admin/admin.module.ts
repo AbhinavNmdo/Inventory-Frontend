@@ -13,6 +13,7 @@ import { AlertComponent } from '../../core/components/alert/alert.component';
 import { AlertClassPipe } from '../../core/components/alert/alert-class.pipe';
 import { AlertService } from '../../core/components/alert/alert.service';
 import { AlertTypeEnum } from '../../core/enums/alert-type-enum';
+import { ConfirmModalComponent } from '../../core/components/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AlertTypeEnum } from '../../core/enums/alert-type-enum';
     CategoryCreateComponent,
     CategoryEditComponent,
     AlertComponent,
-    AlertClassPipe
+    AlertClassPipe,
+    ConfirmModalComponent
   ],
   imports: [
     CommonModule,

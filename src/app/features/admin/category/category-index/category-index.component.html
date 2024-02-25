@@ -8,7 +8,7 @@
     <div class="card-body">
         <div class="table-header">
             <span>
-                <select class="form-select" [(ngModel)]="categoryRequest.perPage" (ngModelChange)="getCategory()">
+                <select class="form-select" [(ngModel)]="categoryRequest.perPage" (change)="getCategory()">
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -22,8 +22,8 @@
                     class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
                     <i class="material-icons text-gray-500 dark:text-gray-400">search</i>
                 </div>
-                <input [(ngModel)]="categoryRequest.searchParam" (ngModelChange)="getCategory()" type="text"
-                    id="table-search" placeholder="Search for items">
+                <input [(ngModel)]="categoryRequest.searchParam" (change)="getCategory()" type="text" id="table-search"
+                    placeholder="Search for items">
             </div>
         </div>
         <div class="table-body">
@@ -40,7 +40,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let category of categories?.data; let $index = index">
+                    <tr *ngIf="categories.data.length == 0">
+                        <td class="text-center" colspan="3">No data found</td>
+                    </tr>
+                    <tr *ngFor="let category of categories.data; let $index = index">
                         <th>{{categories?.from + $index}}</th>
                         <td>{{category.name}}</td>
                         <td>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertInterface } from '../../interfaces/alert-interface';
+import { AlertInterface } from './alert-interface';
 import { AlertService } from './alert.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -7,14 +7,14 @@ const enterTransition = transition(':enter', [
   style({
     opacity: 0
   }),
-  animate('0.3s ease-in-out', style({opacity: 1}))
+  animate('0.3s ease-in-out', style({ opacity: 1 }))
 ]);
 const fadeIn = trigger('fadeIn', [enterTransition])
 const leaveTransition = transition(':leave', [
   style({
     opacity: 1
   }),
-  animate('0.3s ease-in-out', style({opacity: 0}))
+  animate('0.3s ease-in-out', style({ opacity: 0 }))
 ]);
 const fadeOut = trigger('fadeOut', [leaveTransition])
 
@@ -27,9 +27,9 @@ const fadeOut = trigger('fadeOut', [leaveTransition])
 export class AlertComponent implements OnInit {
   alert?: AlertInterface;
 
-  constructor (
+  constructor(
     private alertService: AlertService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.alertService.getAlert().subscribe((alert) => {
@@ -41,8 +41,7 @@ export class AlertComponent implements OnInit {
     }, 10000);
   }
 
-  hideAlert()
-  {
+  hideAlert() {
     this.alert = undefined;
   }
 }
