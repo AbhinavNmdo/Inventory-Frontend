@@ -1,1 +1,14 @@
-<p>category-edit works!</p>
+<h1 class="text-white text-4xl font-bold">Create Category</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="updateCategory" class="card" (ngSubmit)="updateCategoryCall()">
+    <div class="card-body mt-0">
+        <div>
+            <label for="category" class="form-label">Category Name</label>
+            <input type="text" class="form-input" id="category" formControlName="name">
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn-primary">Submit</button>
+    </div>
+</form>

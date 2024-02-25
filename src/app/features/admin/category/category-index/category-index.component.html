@@ -1,127 +1,75 @@
 <h1 class="text-white text-4xl font-bold">Categories</h1>
 
+<app-alert type="success" msg="Caegory has been created successfully"></app-alert>
 <div class="card">
     <div class="card-header">
         <a routerLink="create" class="btn-primary w-min">Create</a>
     </div>
     <div class="card-body">
-        <div class="flex justify-between items-center mb-3">
+        <div class="table-header">
+            <span>
+                <select class="form-select" [(ngModel)]="categoryRequest.perPage" (ngModelChange)="getCategory()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+                Entries per page
+            </span>
             <div class="relative">
-                <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                <div
+                    class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+                    <i class="material-icons text-gray-500 dark:text-gray-400">search</i>
                 </div>
-                <input type="text" id="table-search" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                <input [(ngModel)]="categoryRequest.searchParam" (ngModelChange)="getCategory()" type="text"
+                    id="table-search" placeholder="Search for items">
             </div>
         </div>
-        <div class="table-parent">
+        <div class="table-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>
-                            Product name
-                        </th>
-                        <th>
-                            Color
-                        </th>
-                        <th>
+                        <th>S.No.</th>
+                        <th class="table-filter" (click)="changeOrderBy('name')">
                             Category
+                            <i *ngIf="isAscSorting('name')" class="material-symbols-outlined">keyboard_arrow_up</i>
+                            <i *ngIf="isDescSorting('name')" class="material-symbols-outlined">keyboard_arrow_down</i>
                         </th>
-                        <th>
-                            Price
-                        </th>
-                        <th>
-                            Action
-                        </th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>
-                            Apple MacBook Pro 17"
-                        </th>
+                    <tr *ngFor="let category of categories?.data; let $index = index">
+                        <th>{{categories?.from + $index}}</th>
+                        <td>{{category.name}}</td>
                         <td>
-                            Silver
-                        </td>
-                        <td>
-                            Laptop
-                        </td>
-                        <td>
-                            $2999
-                        </td>
-                        <td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Microsoft Surface Pro
-                        </th>
-                        <td>
-                            White
-                        </td>
-                        <td>
-                            Laptop PC
-                        </td>
-                        <td>
-                            $1999
-                        </td>
-                        <td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Magic Mouse 2
-                        </th>
-                        <td>
-                            Black
-                        </td>
-                        <td>
-                            Accessories
-                        </td>
-                        <td>
-                            $99
-                        </td>
-                        <td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Google Pixel Phone
-                        </th>
-                        <td>
-                            Gray
-                        </td>
-                        <td>
-                            Phone
-                        </td>
-                        <td>
-                            $799
-                        </td>
-                        <td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Apple Watch 5
-                        </th>
-                        <td>
-                            Red
-                        </td>
-                        <td>
-                            Wearables
-                        </td>
-                        <td>
-                            $999
-                        </td>
-                        <td>
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <div class="icon-button-group">
+                                <button class="icon-button icon-danger" (click)="deleteCategory(category.id)"><i
+                                        class="material-symbols-outlined">delete</i></button>
+                                <a routerLink="edit/{{category.id}}" class="icon-button icon-warning"><i
+                                        class="material-icons text-yellow-500 cursor-pointer">edit</i></a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="table-footer">
+            <span>
+                Showing {{categories?.from}} to {{categories?.to}} of {{categories?.total}} Entries
+            </span>
+            <nav>
+                <ul>
+                    @for(link of categories?.links; track $index) {
+                    <li class="cursor-pointer"
+                        (click)="categoryRequest.page = link.url.slice((link.url.indexOf('page=') + 5), link.url.length); getCategory()">
+                        <button [disabled]="link.url == null" [innerHTML]="link.label"
+                            [ngClass]="{'active': link.active}"></button>
+                    </li>
+                    }
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

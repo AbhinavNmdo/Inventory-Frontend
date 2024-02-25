@@ -8,7 +8,11 @@ import { NavbarLinksComponent } from '../../core/components/navbar-links/navbar-
 import { CategoryIndexComponent } from './category/category-index/category-index.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from '../../core/components/alert/alert.component';
+import { AlertClassPipe } from '../../core/components/alert/alert-class.pipe';
+import { AlertService } from '../../core/components/alert/alert.service';
+import { AlertTypeEnum } from '../../core/enums/alert-type-enum';
 
 
 @NgModule({
@@ -18,12 +22,27 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarLinksComponent,
     CategoryIndexComponent,
     CategoryCreateComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    AlertComponent,
+    AlertClassPipe
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+  constructor (
+    public alertService: AlertService
+  ) {}
+
+  showAlert(type: AlertTypeEnum, text: string)
+  {
+    this.alertService.setAlert({
+      type: type,
+      text: text
+    });
+  }
+}

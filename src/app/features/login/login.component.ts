@@ -30,9 +30,9 @@ export class LoginComponent {
     this.userLoginService.userLogin(this.loginUser.value).subscribe((res:IApiResponce) => {
       if (res.status == 200) {
         localStorage.setItem('ang-inv-user', JSON.stringify(res.data));
-        this.router.navigateByUrl('admin');
+        this.router.navigateByUrl('admin/dashboard');
       } else {
-        alert(res.message);
+        alert(res.msg);
       }
     }, errors => {
       alert('Something went wrong');

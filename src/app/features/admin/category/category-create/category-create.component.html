@@ -1,14 +1,20 @@
 <h1 class="text-white text-4xl font-bold">Create Category</h1>
 
-<form [formGroup]="storeCategory" class="card">
-    <div class="card-body mt-0">
-        <div *ngFor="let category of ">
-            <label for="" class="form-label">Category Name</label>
-            <input type="text" class="form-input" id="">
+<app-alert></app-alert>
+<form [formGroup]="storeCategory" class="card" (ngSubmit)="storeCategoryCall()">
+    <div class="card-body mt-0" formArrayName="categories">
+        <div *ngFor="let category of categoryControls; let i = index" [ngClass]="{'mt-4': i > 0}"
+            formGroupName="{{i}}">
+            <label for="category_{{i}}" class="form-label">Category Name</label>
+            <div class="flex justify-center items-center w-full gap-2">
+                <input type="text" class="form-input" id="category_{{i}}" formControlName="name">
+                <i *ngIf="i > 0" class="material-icons text-red-500 cursor-pointer"
+                    (click)="removeCategory(i)">delete</i>
+            </div>
         </div>
     </div>
     <div class="card-footer">
         <button type="submit" class="btn-primary">Submit</button>
-        <button type="button" class="btn-secondary">Add More</button>
+        <button type="button" class="btn-secondary" (click)="addCategory()">Add More</button>
     </div>
 </form>

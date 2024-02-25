@@ -1,4 +1,9 @@
-import { FormArray, FormControl } from "@angular/forms";
+import { FormArray, FormControl, FormGroup } from "@angular/forms";
+
+export interface CategoryInterface {
+    id: number,
+    name: string
+}
 
 export interface CategoryIndex {
     searchParam: string|null,
@@ -6,7 +11,7 @@ export interface CategoryIndex {
 }
 
 export interface CategoryStore {
-    categories: FormArray<FormControl>
+    categories: FormArray<FormGroup<CategoryUpdate>>
 }
 
 export interface CategoryUpdate {

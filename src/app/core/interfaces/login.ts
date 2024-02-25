@@ -7,6 +7,6 @@ export interface ILoginUser {
 
 export interface IApiResponce {
     status: number,
-    message: string|null,
+    msg: string|null,
     data: Array<any>|null
 }

@@ -12,6 +12,10 @@
         @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
     }
 
+    .form-select {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-max p-2.5;
+    }
+
     .btn-primary {
         @apply w-full text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 pt-2 pb-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 w-max;
     }
@@ -52,7 +56,7 @@
         @apply mt-6 flex justify-center items-center gap-3;
     }
 
-    .table-parent {
+    .table-body {
         @apply relative overflow-x-auto shadow-md sm:rounded-lg;
     }
 
@@ -68,12 +72,108 @@
         @apply px-6 py-3;
     }
 
+    .table .table-filter {
+        @apply flex cursor-pointer items-center;
+    }
+
     .table tbody tr {
         @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
     }
 
     .table tbody tr th,td {
         @apply px-6 py-4;
+    }
+
+    .table-header {
+        @apply flex justify-between items-center mb-3;
+    }
+
+    .table-header span {
+        @apply flex justify-center items-center gap-3;
+    }
+
+    .table-header input {
+        @apply block p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+    }
+
+    .table-footer {
+        @apply flex justify-between items-center mt-3;
+    }
+
+    .table-footer span {
+        @apply text-sm text-gray-700 dark:text-gray-400;
+    }
+
+    .table-footer nav ul {
+        @apply inline-flex -space-x-px text-base h-10;
+    }
+
+    .table-footer nav ul li:first-child button {
+        @apply flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-l-md;
+    }
+
+    .table-footer nav ul li button {
+        @apply flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+    }
+
+    .table-footer nav ul li:last-child button {
+        @apply flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white rounded-r-md;
+    }
+    
+    .table-footer nav ul li button.active {
+        @apply flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white;
+    }
+    
+    .table-footer nav ul li button:disabled {
+        @apply disabled:hover:bg-gray-800 disabled:hover:text-gray-400 cursor-not-allowed;
+    }
+
+    .icon-button-group {
+        @apply flex gap-3;
+    }
+
+    .icon-button {
+        @apply outline outline-2 p-0.5 pb-0 rounded-lg;
+    }
+
+    .icon-button.icon-primary {
+        @apply outline-indigo-500;
+    }
+
+    .icon-button.icon-primary i {
+        @apply text-indigo-500;
+    }
+
+    .icon-button.icon-secondary {
+        @apply outline-gray-500;
+    }
+
+    .icon-button.icon-secondary i {
+        @apply text-gray-500;
+    }
+
+    .icon-button.icon-success {
+        @apply outline-green-500;
+    }
+
+    .icon-button.icon-success i {
+        @apply text-green-500;
+    }
+
+    .icon-button.icon-danger {
+        @apply outline-red-500;
+    }
+
+    .icon-button.icon-danger i {
+        @apply text-red-500;
+    }
+
+    .icon-button.icon-warning {
+        @apply outline-yellow-300;
+    }
+
+    .icon-button.icon-warning i {
+        @apply text-yellow-300;
     }
 }
 
