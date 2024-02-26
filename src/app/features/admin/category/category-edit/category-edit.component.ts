@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryUpdate } from '../../../../core/interfaces/category';
+import { CategoryUpdate } from '../../../../core/interfaces/category-interface';
 import { CategoryService } from '../../../../core/services/category.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApiResponce } from '../../../../core/interfaces/login';

@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../enviornments/enviornment';
-import { urls } from '../constants/application-constants';
-import { Subject } from 'rxjs';
-import { IApiResponce, ILoginUser } from '../interfaces/login';
-import { FormGroup } from '@angular/forms';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { IApiResponce } from '../interfaces/login';
 
 @Injectable({
   providedIn: 'root'
@@ -12,34 +10,31 @@ import { FormGroup } from '@angular/forms';
 export class UserLoginService {
 
   public $refreshToken = new Subject<boolean>;
+  protected baseUrl = environment.baseUrl;
 
   constructor(
     private http: HttpClient
   ) {
-    this.$refreshToken.subscribe((res:boolean) => {
+    this.$refreshToken.subscribe((res: boolean) => {
       this.getRefreshToken();
     })
   }
 
-  userLogin(item:Object)
-  {
-    return this.http.post<IApiResponce>(environment.baseUrl + urls.loginUser, item);
+  userLogin(item: Object): Observable<IApiResponce> {
+    return this.http.post<IApiResponce>(`${this.baseUrl}/login`, item);
   }
 
-  getRefreshToken()
-  {
-    return this.http.post<IApiResponce>(environment.baseUrl + urls.refreshToken, {}).subscribe((res:any) => {
+  getRefreshToken(): Subscription {
+    return this.http.post<IApiResponce>(`${this.baseUrl}/refresh`, {}).subscribe((res: any) => {
       localStorage.setItem('ang-inv-user', JSON.stringify(res.data));
     });
   }
 
-  getLoggedInUser()
-  {
-    return this.http.post<IApiResponce>(environment.baseUrl + urls.loggedInUser, {});
+  getLoggedInUser(): Observable<IApiResponce> {
+    return this.http.post<IApiResponce>(`${this.baseUrl}/me`, {});
   }
 
-  logoutUser()
-  {
-    return this.http.delete<IApiResponce>(environment.baseUrl + urls.logoutUser);
+  logoutUser(): Observable<IApiResponce> {
+    return this.http.delete<IApiResponce>(`${this.baseUrl}/logout`);
   }
 }

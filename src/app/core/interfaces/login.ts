@@ -8,5 +8,5 @@ export interface ILoginUser {
 export interface IApiResponce {
     status: number,
     msg: string|null,
-    data: Array<any>|null
+    data: any
 }
