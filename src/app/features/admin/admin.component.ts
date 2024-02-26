@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserLoginService } from '../../core/services/user-login.service';
 import { IApiResponce } from '../../core/interfaces/login';
 import { Router } from '@angular/router';
+import { ConfirmModalService } from '../../core/components/confirm-modal/confirm-modal.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,18 +13,24 @@ export class AdminComponent {
 
   constructor (
     private userLoginService: UserLoginService,
-    private router: Router
+    private router: Router,
+    private confirmModalService: ConfirmModalService
   ) {}
 
   logoutUser(): void
   {
-    if (confirm('Are you sure to logout?')) {
-      this.userLoginService.logoutUser().subscribe((res:IApiResponce) => {
-        if (res.status == 200) {
-          localStorage.removeItem('ang-inv-user');
-          this.router.navigateByUrl('login');
-        }
-      })
-    }
+    this.confirmModalService.setConfirm({
+      data: null,
+      title: 'Are you sure to logout?',
+      onConfirm: () => {
+        this.userLoginService.logoutUser().subscribe((res:IApiResponce) => {
+          if (res.status == 200) {
+            localStorage.removeItem('ang-inv-user');
+            this.router.navigateByUrl('login');
+          }
+        })
+      },
+      onCancel: () => {}
+    });
   }
 }

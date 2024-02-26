@@ -19,10 +19,7 @@ export const bearerTokenInterceptor: HttpInterceptorFn = (req, next) => {
   return next(localData != null ? cloneRequest : req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status == 401 && localData != null) {
-        const isRefesh = confirm('Session expire, do you want to refresh the token?');
-        if (isRefesh) {
-          userLoginService.$refreshToken.next(true);
-        }
+        userLoginService.$refreshToken.next(true);
       }
       return throwError(error);
     })

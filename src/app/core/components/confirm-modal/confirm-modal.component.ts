@@ -1,7 +1,7 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConfirmModalService } from './confirm-modal.service';
 import { ConfirmModalInterface } from './confirm-modal-interface';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 const enterTransition = transition(':enter', [
   style({

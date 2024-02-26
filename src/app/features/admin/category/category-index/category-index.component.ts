@@ -41,7 +41,7 @@ export class CategoryIndexComponent implements OnInit {
   deleteCategory(id: number): void {
     this.confirmModalService.setConfirm({
       data: id,
-      title: 'Are you sure to delete this category',
+      title: 'Are you sure to delete this category?',
       onConfirm: (id: number) => {
         this.categoryService.destory(id).subscribe((res: IApiResponce) => {
           this.getCategory();
