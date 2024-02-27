@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IApiResponce, ILoginUser } from '../../core/interfaces/login';
+import { ApiResponseInterface, LoginUserInterface } from '../../core/interfaces/loginuser-interface';
 import { UserLoginService } from '../../core/services/user-login.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -21,13 +21,13 @@ export class LoginComponent {
     this.titleService.setTitle(`Login | ${environment.projectName}`)
   }
 
-  loginUser:FormGroup<ILoginUser> = new FormGroup<ILoginUser>({
+  loginUser:FormGroup<LoginUserInterface> = new FormGroup<LoginUserInterface>({
     username: new FormControl('abhaynam22', [Validators.required]),
     password: new FormControl('Admin@123', [Validators.required])
   });
 
   loginUserCall () {
-    this.userLoginService.userLogin(this.loginUser.value).subscribe((res:IApiResponce) => {
+    this.userLoginService.userLogin(this.loginUser.value).subscribe((res:ApiResponseInterface) => {
       if (res.status == 200) {
         localStorage.setItem('ang-inv-user', JSON.stringify(res.data));
         this.router.navigateByUrl('admin/dashboard');

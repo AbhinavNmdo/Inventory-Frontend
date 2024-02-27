@@ -1,4 +1,4 @@
-export interface IDatatable {
+export interface DatatableInterface {
     current_page: number;
     data: Array<any>|null;
     first_page_url: string;
@@ -14,7 +14,7 @@ export interface IDatatable {
     links: Array<any>;
 }
 
-export interface IDatableReq {
+export interface DatatableReqInterface {
     perPage: number;
     page: number;
     searchParam: string|null;

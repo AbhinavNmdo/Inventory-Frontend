@@ -1,11 +1,11 @@
 import { FormControl } from "@angular/forms";
 
-export interface ILoginUser {
+export interface LoginUserInterface {
     username: FormControl<string|null>,
     password: FormControl<string|null>
 }
 
-export interface IApiResponce {
+export interface ApiResponseInterface {
     status: number,
     msg: string|null,
     data: any

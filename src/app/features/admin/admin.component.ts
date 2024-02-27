@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserLoginService } from '../../core/services/user-login.service';
-import { IApiResponce } from '../../core/interfaces/login';
+import { ApiResponseInterface } from '../../core/interfaces/loginuser-interface';
 import { Router } from '@angular/router';
 import { ConfirmModalService } from '../../core/components/confirm-modal/confirm-modal.service';
 
@@ -23,7 +23,7 @@ export class AdminComponent {
       data: null,
       title: 'Are you sure to logout?',
       onConfirm: () => {
-        this.userLoginService.logoutUser().subscribe((res:IApiResponce) => {
+        this.userLoginService.logoutUser().subscribe((res:ApiResponseInterface) => {
           if (res.status == 200) {
             localStorage.removeItem('ang-inv-user');
             this.router.navigateByUrl('login');

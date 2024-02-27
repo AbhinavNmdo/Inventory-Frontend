@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../../core/services/category.service';
-import { IDatableReq, OrderByInterface } from '../../../../core/interfaces/datatable.interface';
-import { IApiResponce } from '../../../../core/interfaces/login';
+import { DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
+import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ConfirmModalService } from '../../../../core/components/confirm-modal/c
 })
 export class CategoryIndexComponent implements OnInit {
 
-  categoryRequest: IDatableReq = {
+  categoryRequest: DatatableReqInterface = {
     perPage: 10,
     page: 1,
     searchParam: null,
@@ -33,7 +33,7 @@ export class CategoryIndexComponent implements OnInit {
   }
 
   getCategory(): void {
-    this.categoryService.index(this.categoryRequest).subscribe((res: IApiResponce) => {
+    this.categoryService.index(this.categoryRequest).subscribe((res: ApiResponseInterface) => {
       this.categories = res.data;
     });
   }
@@ -43,7 +43,7 @@ export class CategoryIndexComponent implements OnInit {
       data: id,
       title: 'Are you sure to delete this category?',
       onConfirm: (id: number) => {
-        this.categoryService.destory(id).subscribe((res: IApiResponce) => {
+        this.categoryService.destory(id).subscribe((res: ApiResponseInterface) => {
           this.getCategory();
         });
       },

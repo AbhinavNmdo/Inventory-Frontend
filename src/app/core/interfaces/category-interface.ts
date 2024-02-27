@@ -5,15 +5,10 @@ export interface CategoryInterface {
     name: string
 }
 
-export interface CategoryIndex {
-    searchParam: string|null,
-    orderBy: Array<string>
+export interface CategoryStoreInterface {
+    categories: FormArray<FormGroup<CategoryUpdateInterface>>
 }
 
-export interface CategoryStore {
-    categories: FormArray<FormGroup<CategoryUpdate>>
-}
-
-export interface CategoryUpdate {
+export interface CategoryUpdateInterface {
     name: FormControl<string|null>
 }

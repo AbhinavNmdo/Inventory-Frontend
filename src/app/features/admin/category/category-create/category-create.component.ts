@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryStore } from '../../../../core/interfaces/category-interface';
+import { CategoryStoreInterface } from '../../../../core/interfaces/category-interface';
 import { CategoryService } from '../../../../core/services/category.service';
-import { IApiResponce } from '../../../../core/interfaces/login';
+import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { Router } from '@angular/router';
 import { AlertTypeEnum } from '../../../../core/enums/alert-type-enum';
 import { AlertService } from '../../../../core/components/alert/alert.service';
@@ -14,7 +14,7 @@ import { AlertService } from '../../../../core/components/alert/alert.service';
 })
 export class CategoryCreateComponent {
 
-  storeCategory = new FormGroup<CategoryStore>({
+  storeCategory = new FormGroup<CategoryStoreInterface>({
     categories: new FormArray<FormGroup>([
       new FormGroup({
         name: new FormControl(null, [Validators.required])
@@ -54,6 +54,6 @@ export class CategoryCreateComponent {
       });
       return;
     }
-    this.categoryService.store(this.storeCategory.value).subscribe((res:IApiResponce) => {})
+    this.categoryService.store(this.storeCategory).subscribe((res:ApiResponseInterface) => {})
   }
 }
