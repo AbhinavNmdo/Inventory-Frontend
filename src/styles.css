@@ -72,7 +72,7 @@
         @apply px-6 py-3;
     }
 
-    .table .table-filter {
+    .table thead tr th div.table-filter {
         @apply flex cursor-pointer items-center;
     }
 

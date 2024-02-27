@@ -1,0 +1,92 @@
+<h1 class="text-white text-4xl font-bold">Categories</h1>
+
+<app-alert type="success" msg="Caegory has been created successfully"></app-alert>
+<div class="card">
+    <div class="card-header">
+        <a routerLink="create" class="btn-primary w-min">Create</a>
+    </div>
+    <div class="card-body">
+        <div class="table-header">
+            <span>
+                <select class="form-select" [(ngModel)]="subCategoryRequest.perPage" (change)="getSubCategory()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+                Entries per page
+            </span>
+            <div class="relative">
+                <div
+                    class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+                    <i class="material-icons text-gray-500 dark:text-gray-400">search</i>
+                </div>
+                <input [(ngModel)]="subCategoryRequest.searchParam" (change)="getSubCategory()" type="text" id="table-search"
+                    placeholder="Search for items">
+            </div>
+        </div>
+        <div class="table-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th (click)="changeOrderBy('name')">
+                            <div class="table-filter">
+                                Category
+                                <i *ngIf="isAscSorting('name')" class="material-symbols-outlined">keyboard_arrow_up</i>
+                                <i *ngIf="isDescSorting('name')" class="material-symbols-outlined">keyboard_arrow_down</i>
+                                <i *ngIf="!isAscSorting('name') && !isDescSorting('name')" class="material-symbols-outlined">expand_all</i>
+                            </div>
+                        </th>
+                        <th (click)="changeOrderBy('name')">
+                            <div class="table-filter">
+                                Category
+                                <i *ngIf="isAscSorting('name')" class="material-symbols-outlined">keyboard_arrow_up</i>
+                                <i *ngIf="isDescSorting('name')" class="material-symbols-outlined">keyboard_arrow_down</i>
+                                <i *ngIf="!isAscSorting('name') && !isDescSorting('name')" class="material-symbols-outlined">expand_all</i>
+                            </div>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="subCategories && subCategories.data.length == 0">
+                        <td class="text-center" colspan="4">No data found</td>
+                    </tr>
+                    @if (subCategories) {
+                    <tr *ngFor="let subCategory of subCategories.data; let $index = index">
+                        <th>{{subCategories.from + $index}}</th>
+                        <td>{{subCategory.name}}</td>
+                        <td>{{subCategory.name}}</td>
+                        <td>
+                            <div class="icon-button-group">
+                                <button class="icon-button icon-danger" (click)="deleteSubCategory(subCategory.id)"><i
+                                        class="material-symbols-outlined">delete</i></button>
+                                <a routerLink="edit/{{subCategory.id}}" class="icon-button icon-warning"><i
+                                        class="material-icons text-yellow-500 cursor-pointer">edit</i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="table-footer">
+            <span>
+                Showing {{subCategories?.from}} to {{subCategories?.to}} of {{subCategories?.total}} Entries
+            </span>
+            <nav>
+                <ul>
+                    @for(link of subCategories?.links; track $index) {
+                    <li class="cursor-pointer"
+                        (click)="subCategoryRequest.page = link.url.slice((link.url.indexOf('page=') + 5), link.url.length); getSubCategory()">
+                        <button [disabled]="link.url == null" [innerHTML]="link.label"
+                            [ngClass]="{'active': link.active}"></button>
+                    </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

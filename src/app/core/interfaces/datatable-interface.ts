@@ -1,10 +1,10 @@
 export interface DatatableInterface {
     current_page: number;
-    data: Array<any>|null;
+    data: Array<any>;
     first_page_url: string;
     last_page_url: string;
-    from: number|null;
-    to: number|null;
+    from: number;
+    to: number;
     last_page: number;
     prev_page_url: string|null;
     next_page_url: string|null;

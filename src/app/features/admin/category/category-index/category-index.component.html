@@ -31,20 +31,22 @@
                 <thead>
                     <tr>
                         <th>S.No.</th>
-                        <th class="table-filter" (click)="changeOrderBy('name')">
+                        <th class="table-filter gap-2" (click)="changeOrderBy('name')">
                             Category
                             <i *ngIf="isAscSorting('name')" class="material-symbols-outlined">keyboard_arrow_up</i>
                             <i *ngIf="isDescSorting('name')" class="material-symbols-outlined">keyboard_arrow_down</i>
+                            <i *ngIf="!isAscSorting('name') && !isDescSorting('name')" class="material-symbols-outlined">expand_all</i>
                         </th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="categories.data.length == 0">
+                    <tr *ngIf="categories && categories.data.length == 0">
                         <td class="text-center" colspan="3">No data found</td>
                     </tr>
+                    @if (categories) {
                     <tr *ngFor="let category of categories.data; let $index = index">
-                        <th>{{categories?.from + $index}}</th>
+                        <th>{{categories.from + $index}}</th>
                         <td>{{category.name}}</td>
                         <td>
                             <div class="icon-button-group">
@@ -55,6 +57,7 @@
                             </div>
                         </td>
                     </tr>
+                    }
                 </tbody>
             </table>
         </div>

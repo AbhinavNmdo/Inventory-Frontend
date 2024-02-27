@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../../core/services/category.service';
-import { DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
+import { DatatableInterface, DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
 
@@ -11,7 +11,7 @@ import { ConfirmModalService } from '../../../../core/components/confirm-modal/c
 })
 export class CategoryIndexComponent implements OnInit {
 
-  categoryRequest: DatatableReqInterface = {
+  protected categoryRequest: DatatableReqInterface = {
     perPage: 10,
     page: 1,
     searchParam: null,
@@ -21,7 +21,7 @@ export class CategoryIndexComponent implements OnInit {
     }
   }
 
-  protected categories: any;
+  protected categories?: DatatableInterface;
 
   constructor(
     private categoryService: CategoryService,

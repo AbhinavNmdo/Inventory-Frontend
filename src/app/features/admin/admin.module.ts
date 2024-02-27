@@ -14,6 +14,9 @@ import { AlertClassPipe } from '../../core/components/alert/alert-class.pipe';
 import { AlertService } from '../../core/components/alert/alert.service';
 import { AlertTypeEnum } from '../../core/enums/alert-type-enum';
 import { ConfirmModalComponent } from '../../core/components/confirm-modal/confirm-modal.component';
+import { SubCategoryIndexComponent } from './sub-category/sub-category-index/sub-category-index.component';
+import { SubCategoryCreateComponent } from './sub-category/sub-category-create/sub-category-create.component';
+import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-category-edit.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { ConfirmModalComponent } from '../../core/components/confirm-modal/confi
     CategoryEditComponent,
     AlertComponent,
     AlertClassPipe,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    SubCategoryIndexComponent,
+    SubCategoryCreateComponent,
+    SubCategoryEditComponent
   ],
   imports: [
     CommonModule,
