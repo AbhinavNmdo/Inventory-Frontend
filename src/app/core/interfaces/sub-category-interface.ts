@@ -12,6 +12,6 @@ export interface SubCategoryStoreInterface {
 }
 
 export interface SubCategoryUpdateInterface {
-    category_id: FormControl<number>;
-    name: FormControl<string>;
+    category_id: FormControl<number|null>;
+    name: FormControl<string|null>;
 }
