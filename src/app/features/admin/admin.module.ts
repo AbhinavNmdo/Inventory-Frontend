@@ -17,6 +17,7 @@ import { ConfirmModalComponent } from '../../core/components/confirm-modal/confi
 import { SubCategoryIndexComponent } from './sub-category/sub-category-index/sub-category-index.component';
 import { SubCategoryCreateComponent } from './sub-category/sub-category-create/sub-category-create.component';
 import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-category-edit.component';
+import { TableSortingButtonComponent } from '../../core/components/table-sorting-button/table-sorting-button.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-c
     ConfirmModalComponent,
     SubCategoryIndexComponent,
     SubCategoryCreateComponent,
-    SubCategoryEditComponent
+    SubCategoryEditComponent,
+    TableSortingButtonComponent
   ],
   imports: [
     CommonModule,

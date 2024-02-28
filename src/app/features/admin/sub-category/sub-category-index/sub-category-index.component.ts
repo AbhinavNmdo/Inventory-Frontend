@@ -40,17 +40,9 @@ export class SubCategoryIndexComponent implements OnInit {
     this.subCategoryService.destroy(id).subscribe();
   }
 
-  isDescSorting(column: string): boolean {
-    return this.subCategoryRequest.orderBy.column == column && this.subCategoryRequest.orderBy.order == 'desc';
-  }
-
-  isAscSorting(column: string): boolean {
-    return this.subCategoryRequest.orderBy.column == column && this.subCategoryRequest.orderBy.order == 'asc';
-  }
-
-  changeOrderBy(column: string): void {
-    let order = this.isDescSorting(column) ? 'asc' : 'desc';
+  changeOrderBy(column: string, order: string): void {
     this.subCategoryRequest.orderBy = { column, order };
+    console.log(this.subCategoryRequest)
     this.getSubCategory();
   }
 }

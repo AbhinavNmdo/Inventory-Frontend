@@ -11,7 +11,7 @@ import { ConfirmModalService } from '../../../../core/components/confirm-modal/c
 })
 export class CategoryIndexComponent implements OnInit {
 
-  protected categoryRequest: DatatableReqInterface = {
+  public categoryRequest: DatatableReqInterface = {
     perPage: 10,
     page: 1,
     searchParam: null,
@@ -51,16 +51,7 @@ export class CategoryIndexComponent implements OnInit {
     });
   }
 
-  isDescSorting(column: string): boolean {
-    return this.categoryRequest.orderBy.column == column && this.categoryRequest.orderBy.order == 'desc';
-  }
-
-  isAscSorting(column: string): boolean {
-    return this.categoryRequest.orderBy.column == column && this.categoryRequest.orderBy.order == 'asc';
-  }
-
-  changeOrderBy(column: string): void {
-    let order = this.isDescSorting(column) ? 'asc' : 'desc';
+  changeOrderBy(column: string, order: string): void {
     this.categoryRequest.orderBy = { column, order };
     this.getCategory();
   }
