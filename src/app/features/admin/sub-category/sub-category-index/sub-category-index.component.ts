@@ -17,7 +17,8 @@ export class SubCategoryIndexComponent implements OnInit {
     orderBy: <OrderByInterface>{
       column: 'id',
       order: 'desc'
-    }
+    },
+    isPaginate: true
   }
 
   protected subCategories?: DatatableInterface;

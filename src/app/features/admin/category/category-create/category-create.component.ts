@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryStoreInterface } from '../../../../core/interfaces/category-interface';
 import { CategoryService } from '../../../../core/services/category.service';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
-import { Router } from '@angular/router';
 import { AlertTypeEnum } from '../../../../core/enums/alert-type-enum';
 import { AlertService } from '../../../../core/components/alert/alert.service';
 

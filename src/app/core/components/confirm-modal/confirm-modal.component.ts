@@ -5,35 +5,34 @@ import { animate, style, transition, trigger } from '@angular/animations';
 
 const enterTransition = transition(':enter', [
   style({
-    opacity: 0
+    opacity: 0,
   }),
-  animate('0.3s ease-in-out', style({ opacity: 1 }))
+  animate('0.3s ease-in-out', style({ opacity: 1 })),
 ]);
-const fadeIn = trigger('fadeIn', [enterTransition])
+const fadeIn = trigger('fadeIn', [enterTransition]);
 const leaveTransition = transition(':leave', [
   style({
-    opacity: 1
+    opacity: 1,
   }),
-  animate('0.3s ease-in-out', style({ opacity: 0 }))
+  animate('0.3s ease-in-out', style({ opacity: 0 })),
 ]);
-const fadeOut = trigger('fadeOut', [leaveTransition])
+const fadeOut = trigger('fadeOut', [leaveTransition]);
 
 @Component({
   selector: 'app-confirm-modal',
   templateUrl: './confirm-modal.component.html',
   styleUrl: './confirm-modal.component.css',
-  animations: [fadeIn, fadeOut]
+  animations: [fadeIn, fadeOut],
 })
 export class ConfirmModalComponent implements OnInit {
-
-  confirm?: ConfirmModalInterface;
+  public confirm?: ConfirmModalInterface;
 
   constructor(
     private confirmModalService: ConfirmModalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.confirmModalService.getConfirm().subscribe((res) => {
+    this.confirmModalService.$confirm.subscribe((res) => {
       this.confirm = res;
     });
   }

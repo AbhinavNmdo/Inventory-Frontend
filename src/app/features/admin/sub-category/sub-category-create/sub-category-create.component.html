@@ -1,1 +1,26 @@
-<p>sub-category-create works!</p>
+<h1 class="text-white text-4xl font-bold">Create Sub-Category</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="storeSubCategory" class="card" (ngSubmit)="storeSubCategoryCall()">
+  <div class="card-body mt-0" formArrayName="subCategories">
+    <div>
+      <label for="category" class="form-label">Category</label>
+      <select formGroupName="categoryId" id="category">
+        <option value="">Select Category</option>
+        <option value=""></option>
+      </select>
+    </div>
+    <div *ngFor="let subCategory of subCategoryControls; let i = index" formGroupName="{{i}}" class="mt-4">
+      <label for="sub_category_{{i}}" class="form-label">Sub Category</label>
+      <div class="flex justify-center items-center w-full gap-2">
+        <input type="text" class="form-input" formControlName="name" id="sub-category_{{i}}">
+          <i *ngIf="i > 0" class="material-icons text-red-500 cursor-pointer"
+            (click)="removeSubCategory(i)">delete</i>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+      <button type="submit" class="btn-primary">Submit</button>
+      <button type="button" class="btn-secondary" (click)="addSubCategory()">Add More</button>
+  </div>
+</form>

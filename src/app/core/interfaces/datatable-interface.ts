@@ -15,10 +15,11 @@ export interface DatatableInterface {
 }
 
 export interface DatatableReqInterface {
-    perPage: number;
-    page: number;
+    perPage: number|null;
+    page: number|null;
     searchParam: string|null;
-    orderBy: OrderByInterface
+    orderBy: OrderByInterface;
+    isPaginate: boolean;
 }
 
 export interface OrderByInterface {
