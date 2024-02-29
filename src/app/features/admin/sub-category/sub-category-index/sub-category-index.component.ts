@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatatableInterface, DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
 import { SubCategoryService } from '../../../../core/services/sub-category.service';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
+import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
 
 @Component({
   selector: 'app-sub-category-index',
@@ -15,16 +16,17 @@ export class SubCategoryIndexComponent implements OnInit {
     page: 1,
     searchParam: null,
     orderBy: <OrderByInterface>{
-      column: 'id',
-      order: 'desc'
+      column: 'category.name',
+      order: 'asc'
     },
-    isPaginate: true
+    isPaginate: false
   }
 
   protected subCategories?: DatatableInterface;
 
   constructor (
-    private subCategoryService: SubCategoryService
+    private subCategoryService: SubCategoryService,
+    private confirmModalService: ConfirmModalService
   ) {}
 
   ngOnInit(): void {
@@ -38,12 +40,18 @@ export class SubCategoryIndexComponent implements OnInit {
   }
 
   deleteSubCategory(id: number): void {
-    this.subCategoryService.destroy(id).subscribe();
+    this.confirmModalService.setConfirm({
+      data: id,
+      title: 'Are you sure to delete this sub-category?',
+      onConfirm: () => {
+        this.subCategoryService.destroy(id).subscribe();
+      },
+      onCancel: () => {}
+    })
   }
 
   changeOrderBy(column: string, order: string): void {
     this.subCategoryRequest.orderBy = { column, order };
-    console.log(this.subCategoryRequest)
     this.getSubCategory();
   }
 }

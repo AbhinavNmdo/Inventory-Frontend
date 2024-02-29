@@ -15,9 +15,9 @@ export interface DatatableInterface {
 }
 
 export interface DatatableReqInterface {
-    perPage: number|null;
-    page: number|null;
-    searchParam: string|null;
+    perPage?: number|null;
+    page?: number|null;
+    searchParam?: string|null;
     orderBy: OrderByInterface;
     isPaginate: boolean;
 }

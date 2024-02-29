@@ -4,6 +4,8 @@ import { SubCategoryStoreInterface, SubCategoryUpdateInterface } from '../../../
 import { SubCategoryService } from '../../../../core/services/sub-category.service';
 import { CategoryService } from '../../../../core/services/category.service';
 import { CategoryInterface } from '../../../../core/interfaces/category-interface';
+import { DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
+import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 
 @Component({
   selector: 'app-sub-category-create',
@@ -12,7 +14,14 @@ import { CategoryInterface } from '../../../../core/interfaces/category-interfac
 })
 export class SubCategoryCreateComponent implements OnInit {
 
-  protected categories?: CategoryInterface;
+  protected categories?: CategoryInterface[];
+  protected categoryRequest: DatatableReqInterface = {
+    isPaginate: false,
+    orderBy: <OrderByInterface>{
+      column: 'name',
+      order: 'asc'
+    }
+  };
 
   constructor (
     private subCategoryService: SubCategoryService,
@@ -20,7 +29,9 @@ export class SubCategoryCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+    this.categoryService.index(this.categoryRequest).subscribe((res: ApiResponseInterface<CategoryInterface[]>) => {
+      this.categories = res.data;
+    });
   }
 
   storeSubCategory = new FormGroup<SubCategoryStoreInterface>({
