@@ -5,10 +5,11 @@
         <span class="flex items-center ps-2.5 mb-5">
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Inventory</span>
         </span>
-        <ul class="space-y-2 font-medium">
+        <ul class="space-y-1 font-medium flex flex-col">
             <app-navbar-links href="dashboard" icon="dashboard" label="Dashboard"></app-navbar-links>
             <app-navbar-links href="category" icon="category" label="Categories"></app-navbar-links>
             <app-navbar-links href="sub-category" icon="layers" label="Sub Categories"></app-navbar-links>
+            <app-navbar-links href="product" icon="inventory_2" label="Product"></app-navbar-links>
             <app-navbar-links class="absolute bottom-3 w-[14.5rem]" href="#" icon="logout" label="Logout" (click)="logoutUser()"></app-navbar-links>
         </ul>
     </div>

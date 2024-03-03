@@ -7,6 +7,9 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
 import { SubCategoryIndexComponent } from './sub-category/sub-category-index/sub-category-index.component';
 import { SubCategoryCreateComponent } from './sub-category/sub-category-create/sub-category-create.component';
 import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-category-edit.component';
+import { ProductIndexComponent } from './product/product-index/product-index.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -20,6 +23,11 @@ const routes: Routes = [
     {path: '', component: SubCategoryIndexComponent},
     {path: 'create', component: SubCategoryCreateComponent},
     {path: 'edit/:id', component: SubCategoryEditComponent}
+  ]},
+  {path: 'product', children: [
+    {path: '', component: ProductIndexComponent},
+    {path: 'create', component: ProductCreateComponent},
+    {path: 'edit/:id', component: ProductEditComponent}
   ]}
 ];
 

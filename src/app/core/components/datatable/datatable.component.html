@@ -40,12 +40,15 @@
         </thead>
         <tbody>
             <tr *ngIf="datatable?.tableData && datatable?.tableData?.data?.length == 0">
-                <td class="text-center" colspan="3">No data found</td>
+                <td class="text-center" [attr.colspan]="(datatable?.colDefs?.length ?? 0) + 2">No data found</td>
             </tr>
             @if (datatable?.tableData?.data) {
             <tr *ngFor="let colData of datatable?.tableData?.data; let $index = index">
                 <th>{{(datatable?.tableData?.from ?? 1) + $index}}</th>
-                <td *ngFor="let tableCols of datatable?.colDefs">{{colData | getNestedValue:(tableCols.data)}}</td>
+                @for (tableCols of datatable?.colDefs; track $index) {
+                    <td *ngIf="!tableCols.render">{{colData | getNestedValue:(tableCols.data)}}</td>
+                    <td *ngIf="tableCols.render" [innerHtml]="tableCols.render(colData | getNestedValue:(tableCols.data))"></td>
+                }
                 <td *ngIf="datatable?.actions">
                     <div class="icon-button-group">
                         @for (action of datatable?.actions; track $index) {

@@ -20,6 +20,9 @@ import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-c
 import { TableSortingButtonComponent } from '../../core/components/table-sorting-button/table-sorting-button.component';
 import { DatatableComponent } from '../../core/components/datatable/datatable.component';
 import { GetNestedValuePipe } from '../../core/components/datatable/get-nested-value.pipe';
+import { ProductIndexComponent } from './product/product-index/product-index.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { GetNestedValuePipe } from '../../core/components/datatable/get-nested-v
     SubCategoryEditComponent,
     TableSortingButtonComponent,
     DatatableComponent,
-    GetNestedValuePipe
+    GetNestedValuePipe,
+    ProductIndexComponent,
+    ProductCreateComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,

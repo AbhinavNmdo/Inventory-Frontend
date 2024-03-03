@@ -32,7 +32,7 @@ export class CategoryIndexComponent implements OnInit {
       {
         label: 'Name',
         data: 'name',
-        orderable: true,
+        orderable: true
       }
     ],
     actions: [
