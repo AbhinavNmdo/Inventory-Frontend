@@ -3,7 +3,8 @@ import { CategoryInterface } from './category-interface';
 
 export interface SubCategoryInterface {
   id: number;
-  category: CategoryInterface;
+  category_id: number;
+  category?: CategoryInterface;
   name: string;
 }
 
@@ -17,6 +18,6 @@ export interface SubCategoryStoreInterface {
 }
 
 export interface SubCategoryUpdateInterface {
-  category_id: FormControl<number | null>;
+  categoryId: FormControl<number | null>;
   name: FormControl<string | null>;
 }

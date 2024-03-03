@@ -1,1 +1,23 @@
-<p>sub-category-edit works!</p>
+<h1 class="text-white text-4xl font-bold">Create Category</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="updateSubCategory" class="card" (ngSubmit)="updateSubCategoryCall()">
+    <div class="card-body">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select w-full" formControlName="categoryId" id="category">
+                    <option value="">Select</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+            </div>
+            <div>
+                <label for="sub-category" class="form-label">Name</label>
+                <input type="text" class="form-input" formControlName="name" id="sub-category">
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn-primary">Submit</button>
+    </div>
+</form>

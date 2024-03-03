@@ -53,7 +53,7 @@ export class CategoryService {
     return this.http.get<ApiResponseInterface>(`${this.baseUrl}/category/${id}`);
   }
 
-  update(id: string, item: FormGroup<CategoryUpdateInterface>): Observable<ApiResponseInterface> {
+  update(id: number, item: FormGroup<CategoryUpdateInterface>): Observable<ApiResponseInterface> {
     return this.http.put<ApiResponseInterface>(`${this.baseUrl}/category/${id}`, item).pipe(
       tap((res: ApiResponseInterface) => {
         this.router.navigateByUrl('admin/category');

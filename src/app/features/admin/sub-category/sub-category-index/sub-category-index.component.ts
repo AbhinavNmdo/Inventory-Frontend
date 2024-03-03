@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatatableInterface, DatatableReqInterface, OrderByInterface, TableInterface } from '../../../../core/interfaces/datatable-interface';
+import { DatatableReqInterface, OrderByInterface, TableInterface } from '../../../../core/interfaces/datatable-interface';
 import { SubCategoryService } from '../../../../core/services/sub-category.service';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
