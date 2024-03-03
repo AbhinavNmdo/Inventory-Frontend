@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatatableInterface, DatatableReqInterface, OrderByInterface } from '../../../../core/interfaces/datatable-interface';
+import { DatatableInterface, DatatableReqInterface, OrderByInterface, TableInterface } from '../../../../core/interfaces/datatable-interface';
 import { SubCategoryService } from '../../../../core/services/sub-category.service';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
@@ -22,7 +22,35 @@ export class SubCategoryIndexComponent implements OnInit {
     isPaginate: true
   }
 
-  protected subCategories?: DatatableInterface;
+  datatable: TableInterface = {
+    tableData: undefined,
+    tableRequest: this.subCategoryRequest,
+    getDataFunc: this.getSubCategory,
+    colDefs: [
+      {
+        label: 'Category',
+        data: 'category.name',
+        orderable: true,
+      },
+      {
+        label: 'Name',
+        data: 'name',
+        orderable: true,
+      }
+    ],
+    actions: [
+      {
+        icon: 'delete',
+        color: 'icon-danger',
+        functionName: 'deleteSubCategory'
+      },
+      {
+        icon: 'edit',
+        color: 'icon-warning',
+        routerLink: 'edit/:id'
+      }
+    ]
+  }
 
   constructor (
     private subCategoryService: SubCategoryService,
@@ -30,28 +58,29 @@ export class SubCategoryIndexComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getSubCategory();
   }
 
-  getSubCategory(): void {
-    this.subCategoryService.index(this.subCategoryRequest).subscribe((res: ApiResponseInterface) => {
-      this.subCategories = res.data;
+  getSubCategory(requestParam: DatatableReqInterface): void {
+    this.subCategoryService.index(requestParam).subscribe((res: ApiResponseInterface) => {
+      this.datatable.tableData = res.data;
     });
   }
 
-  deleteSubCategory(id: number): void {
+  deleteSubCategory(data: any): void {
+    console.log(data);
     this.confirmModalService.setConfirm({
-      data: id,
+      data: data.data.id,
       title: 'Are you sure to delete this sub-category?',
-      onConfirm: () => {
-        this.subCategoryService.destroy(id).subscribe();
+      onConfirm: (id: number) => {
+        this.subCategoryService.destroy(id).subscribe(() => {
+          this.getSubCategory(data.tableRequest);
+        });
       },
       onCancel: () => {}
     })
   }
 
-  changeOrderBy(column: string, order: string): void {
-    this.subCategoryRequest.orderBy = { column, order };
-    this.getSubCategory();
+  handleActionClick(event: any): void {
+    (this as any)[event.functionName](event);
   }
 }

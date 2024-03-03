@@ -6,78 +6,10 @@
         <a routerLink="create" class="btn-primary w-min">Create</a>
     </div>
     <div class="card-body">
-        <div class="table-header">
-            <span>
-                <select class="form-select" [(ngModel)]="categoryRequest.perPage" (change)="getCategory()">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-                Entries per page
-            </span>
-            <div class="relative">
-                <div
-                    class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                    <i class="material-icons text-gray-500 dark:text-gray-400">search</i>
-                </div>
-                <input [(ngModel)]="categoryRequest.searchParam" (change)="getCategory()" type="text" id="table-search"
-                    placeholder="Search for items">
-            </div>
-        </div>
-        <div class="table-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>S.No.</th>
-                        <th>
-                            <app-table-sorting-button
-                                label="Category"
-                                columnName="name"
-                                [orderByObj]="categoryRequest.orderBy"
-                                (refreshOrderBy)="changeOrderBy($event.column, $event.order)"
-                            ></app-table-sorting-button>
-                        </th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngIf="categories && categories.data.length == 0">
-                        <td class="text-center" colspan="3">No data found</td>
-                    </tr>
-                    @if (categories) {
-                    <tr *ngFor="let category of categories.data; let $index = index">
-                        <th>{{categories.from + $index}}</th>
-                        <td>{{category.name}}</td>
-                        <td>
-                            <div class="icon-button-group">
-                                <button class="icon-button icon-danger" (click)="deleteCategory(category.id)"><i
-                                        class="material-symbols-outlined">delete</i></button>
-                                <a routerLink="edit/{{category.id}}" class="icon-button icon-warning"><i
-                                        class="material-icons text-yellow-500 cursor-pointer">edit</i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="table-footer">
-            <span>
-                Showing {{categories?.from}} to {{categories?.to}} of {{categories?.total}} Entries
-            </span>
-            <nav>
-                <ul>
-                    @for(link of categories?.links; track $index) {
-                    <li class="cursor-pointer"
-                        (click)="categoryRequest.page = link.url.slice((link.url.indexOf('page=') + 5), link.url.length); getCategory()">
-                        <button [disabled]="link.url == null" [innerHTML]="link.label"
-                            [ngClass]="{'active': link.active}"></button>
-                    </li>
-                    }
-                </ul>
-            </nav>
-        </div>
+        <app-datatable
+            [datatable]="datatable"
+            (refreshData)="getCategory($event)"
+            (actionClick)="handleActionClick($event)"
+        ></app-datatable>
     </div>
 </div>

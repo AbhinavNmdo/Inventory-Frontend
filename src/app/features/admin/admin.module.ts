@@ -18,6 +18,8 @@ import { SubCategoryIndexComponent } from './sub-category/sub-category-index/sub
 import { SubCategoryCreateComponent } from './sub-category/sub-category-create/sub-category-create.component';
 import { SubCategoryEditComponent } from './sub-category/sub-category-edit/sub-category-edit.component';
 import { TableSortingButtonComponent } from '../../core/components/table-sorting-button/table-sorting-button.component';
+import { DatatableComponent } from '../../core/components/datatable/datatable.component';
+import { GetNestedValuePipe } from '../../core/components/datatable/get-nested-value.pipe';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { TableSortingButtonComponent } from '../../core/components/table-sorting
     SubCategoryIndexComponent,
     SubCategoryCreateComponent,
     SubCategoryEditComponent,
-    TableSortingButtonComponent
+    TableSortingButtonComponent,
+    DatatableComponent,
+    GetNestedValuePipe
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
-export interface DatatableInterface {
+export interface DatatableInterface<DataType = any> {
     current_page: number;
-    data: Array<any>;
+    data: Array<DataType>;
     first_page_url: string;
     last_page_url: string;
     from: number;
@@ -25,4 +25,22 @@ export interface DatatableReqInterface {
 export interface OrderByInterface {
     column: string;
     order: string;
+}
+
+export interface TableInterface {
+    tableData?: DatatableInterface,
+    tableRequest: DatatableReqInterface,
+    getDataFunc: Function,
+    colDefs: Array<{
+        label: string,
+        data: string,
+        orderable: boolean,
+        render?: Function
+    }>,
+    actions?: Array<{
+        icon: string,
+        color: string,
+        functionName?: any,
+        routerLink?: string
+    }>
 }
