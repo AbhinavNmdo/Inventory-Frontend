@@ -9,16 +9,11 @@ import { ApiResponseInterface } from '../interfaces/loginuser-interface';
 })
 export class UserLoginService {
 
-  public $refreshToken = new Subject<boolean>;
   protected baseUrl = environment.baseUrl;
 
   constructor(
     private http: HttpClient
-  ) {
-    this.$refreshToken.subscribe((res: boolean) => {
-      this.getRefreshToken();
-    })
-  }
+  ) { }
 
   userLogin(item: Object): Observable<ApiResponseInterface> {
     return this.http.post<ApiResponseInterface>(`${this.baseUrl}/login`, item);
@@ -27,6 +22,7 @@ export class UserLoginService {
   getRefreshToken(): Subscription {
     return this.http.post<ApiResponseInterface>(`${this.baseUrl}/refresh`, {}).subscribe((res: any) => {
       localStorage.setItem('ang-inv-user', JSON.stringify(res.data));
+      window.location.reload();
     });
   }
 

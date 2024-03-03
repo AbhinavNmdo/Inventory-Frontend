@@ -16,10 +16,10 @@ export class SubCategoryIndexComponent implements OnInit {
     page: 1,
     searchParam: null,
     orderBy: <OrderByInterface>{
-      column: 'category.name',
-      order: 'asc'
+      column: 'id',
+      order: 'desc'
     },
-    isPaginate: false
+    isPaginate: true
   }
 
   protected subCategories?: DatatableInterface;
