@@ -25,7 +25,6 @@ export class SubCategoryIndexComponent implements OnInit {
   datatable: TableInterface = {
     tableData: undefined,
     tableRequest: this.subCategoryRequest,
-    getDataFunc: this.getSubCategory,
     colDefs: [
       {
         label: 'Category',

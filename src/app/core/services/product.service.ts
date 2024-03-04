@@ -24,7 +24,7 @@ export class ProductService {
   ) { }
 
   index(item: DatatableReqInterface): Observable<ApiResponseInterface> {
-    return this.http.post<ApiResponseInterface>(`${this.baseUrl}/product`, item);
+    return this.http.post<ApiResponseInterface>(`${this.baseUrl}/product/index`, item);
   }
 
   store(item: FormGroup<ProductStoreInterface>): Observable<ApiResponseInterface> {

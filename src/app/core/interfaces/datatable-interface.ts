@@ -30,7 +30,6 @@ export interface OrderByInterface {
 export interface TableInterface {
     tableData?: DatatableInterface,
     tableRequest: DatatableReqInterface,
-    getDataFunc: Function,
     colDefs: Array<{
         label: string,
         data: string,

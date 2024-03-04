@@ -27,7 +27,6 @@ export class CategoryIndexComponent implements OnInit {
   datatable: TableInterface = {
     tableData: undefined,
     tableRequest: this.categoryRequest,
-    getDataFunc: this.getCategory,
     colDefs: [
       {
         label: 'Name',

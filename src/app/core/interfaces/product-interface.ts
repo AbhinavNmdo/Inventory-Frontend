@@ -16,11 +16,11 @@ export interface ProductInterface {
 }
 
 export interface ProductStoreInterface {
-    categoryId: FormControl<number>,
-    subCategoryId: FormControl<number>,
+    categoryId: FormControl<number | null>,
+    subCategoryId: FormControl<number | null>,
     products: FormArray<FormGroup<{
-        name: FormControl<string>,
-        stock: FormControl<number>
+        name: FormControl<string | null>,
+        stock: FormControl<number | null>
     }>>
 }
 
