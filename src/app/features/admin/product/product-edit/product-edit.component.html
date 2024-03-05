@@ -1,1 +1,34 @@
-<p>product-edit works!</p>
+<h1 class="text-white text-4xl font-bold">Edit Product</h1>
+
+<form [formGroup]="productUpdate" class="card" (ngSubmit)="productUpdateCall()">
+  <div class="card-body mt-0">
+    <div class="grid grid-cols-3 gap-5">
+
+      <div>
+        <label for="category" class="form-label">Category</label>
+        <select (change)="loadSubCategory(category.value)" #category formControlName="categoryId" id="category" class="form-select w-full">
+          <option value="">Select</option>
+          <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="category" class="form-label">Sub Category</label>
+        <select formControlName="subCategoryId" id="sub_category" class="form-select w-full">
+          <option value="">Select</option>
+          <option *ngFor="let subCategory of subCategories" value="{{subCategory.id}}">{{subCategory.name}}</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-input" formControlName="name">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button type="submit" class="btn-primary">Submit</button>
+  </div>
+</form>

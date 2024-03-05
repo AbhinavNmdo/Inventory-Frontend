@@ -11,6 +11,7 @@ export interface ProductInterface {
             name: string
         }
     },
+    sub_category_id: number,
     name: string,
     stock: number
 }
@@ -25,9 +26,8 @@ export interface ProductStoreInterface {
 }
 
 export interface ProductUpdateInterface {
-    categoryId: FormControl<number>,
-    subCategoryId: FormControl<number>,
-    name: FormControl<string>,
-    stock: FormControl<number>
+    categoryId: FormControl<number | null>,
+    subCategoryId: FormControl<number | null>,
+    name: FormControl<string | null>,
 }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  DatatableActionInterface,
   DatatableReqInterface,
   TableInterface,
 } from '../../../../core/interfaces/datatable-interface';
@@ -9,6 +10,8 @@ import { ProductService } from '../../../../core/services/product.service';
 import { CategoryInterface } from '../../../../core/interfaces/category-interface';
 import { SubCategoryInterface } from '../../../../core/interfaces/sub-category-interface';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
+import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
+import { ProductInterface } from '../../../../core/interfaces/product-interface';
 
 @Component({
   selector: 'app-product-index',
@@ -46,6 +49,14 @@ export class ProductIndexComponent implements OnInit {
         data: 'name',
         orderable: true,
       },
+      {
+        label: 'Current Stock',
+        data: 'stock',
+        orderable: true,
+        render: (data: any) => {
+          return data * 1;
+        }
+      }
     ],
     actions: [
       {
@@ -61,7 +72,10 @@ export class ProductIndexComponent implements OnInit {
     ],
   };
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private confirmModalService: ConfirmModalService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -71,6 +85,19 @@ export class ProductIndexComponent implements OnInit {
       .subscribe((res: ApiResponseInterface) => {
         this.datatable.tableData = res.data;
       });
+  }
+
+  deleteProduct(data: DatatableActionInterface<ProductInterface>): void {
+    this.confirmModalService.setConfirm({
+      data: data.data.id,
+      title: 'Are you sure to delete this Product?',
+      onConfirm: (id: number) => {
+        this.productService.destroy(id).subscribe(() => {
+          this.getProduct(data.tableRequest)
+        });
+      },
+      onCancel: () => {}
+    });
   }
 
   handleActionClick(event: { data: any; functionName: string }): void {

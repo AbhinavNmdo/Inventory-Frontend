@@ -20,6 +20,10 @@ export interface DatatableReqInterface {
     searchParam?: string|null;
     orderBy: OrderByInterface;
     isPaginate: boolean;
+    filters?: Array<{
+      column: string,
+      value: string|number|null
+    }>;
 }
 
 export interface OrderByInterface {
@@ -42,4 +46,10 @@ export interface TableInterface {
         functionName?: any,
         routerLink?: string
     }>
+}
+
+export interface DatatableActionInterface<DataType = any> {
+  data: DataType,
+  functionName: string,
+  tableRequest: any
 }

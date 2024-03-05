@@ -24,7 +24,7 @@
         <thead>
             <tr>
                 <th>S.No.</th>
-                <th *ngFor="let tableCols of datatable?.colDefs">
+                <th *ngFor="let tableCols of datatable?.colDefs" class="select-none">
                     <span *ngIf="!tableCols.orderable">{{tableCols.label}}</span>
                     <div *ngIf="tableCols.orderable" class="table-filter" (click)="changeOrderBy(tableCols.data)">
                         {{tableCols.label}}
