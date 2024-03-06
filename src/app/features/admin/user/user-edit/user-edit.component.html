@@ -1,0 +1,20 @@
+<h1 class="text-white text-4xl font-bold">Edit User</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="userUpdate" class="card" (ngSubmit)="userUpdateCall()">
+    <div class="card-body mt-0">
+      <div class="grid grid-cols-2 gap-5">
+        <div>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-input" id="name" formControlName="name">
+        </div>
+        <div>
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-input" id="email" formControlName="email">
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn-primary">Submit</button>
+    </div>
+</form>

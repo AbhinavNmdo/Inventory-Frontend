@@ -1,0 +1,15 @@
+<h1 class="text-white text-4xl font-bold">Users</h1>
+
+<app-alert></app-alert>
+<div class="card">
+    <div class="card-header">
+        <a routerLink="create" class="btn-primary w-min">Create</a>
+    </div>
+    <div class="card-body">
+        <app-datatable
+            [datatable]="datatable"
+            (refreshData)="getUser($event)"
+            (actionClick)="handleActionClick($event)"
+        ></app-datatable>
+    </div>
+</div>

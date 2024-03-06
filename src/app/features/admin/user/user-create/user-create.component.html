@@ -1,0 +1,26 @@
+<h1 class="text-white text-4xl font-bold">Create User</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="userStore" class="card" (ngSubmit)="userStoreCall()">
+    <div class="card-body mt-0" formArrayName="users">
+        <div *ngFor="let category of userControls; let i = index" [ngClass]="{'mt-4': i > 0}"
+            formGroupName="{{i}}" class="grid grid-cols-2 gap-5">
+            <div>
+              <label for="name_{{i}}" class="form-label">Name</label>
+                <input type="text" class="form-input" id="name_{{i}}" formControlName="name">
+            </div>
+            <div>
+              <label for="email_{{i}}" class="form-label">Email</label>
+              <div class="flex justify-center items-center w-full gap-2">
+                  <input type="text" class="form-input" id="email_{{i}}" formControlName="email">
+                  <i *ngIf="i > 0" class="material-icons text-red-500 cursor-pointer"
+                      (click)="removeUser(i)">delete</i>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn-primary">Submit</button>
+        <button type="button" class="btn-secondary" (click)="addUser()">Add More</button>
+    </div>
+</form>

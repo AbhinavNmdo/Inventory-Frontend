@@ -23,6 +23,9 @@ import { GetNestedValuePipe } from '../../core/components/datatable/get-nested-v
 import { ProductIndexComponent } from './product/product-index/product-index.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { UserIndexComponent } from './user/user-index/user-index.component';
+import { UserCreateComponent } from './user/user-create/user-create.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
     GetNestedValuePipe,
     ProductIndexComponent,
     ProductCreateComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    UserIndexComponent,
+    UserCreateComponent,
+    UserEditComponent
   ],
   imports: [
     CommonModule,
