@@ -13,6 +13,8 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
 import { UserIndexComponent } from './user/user-index/user-index.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { PurchaseIndexComponent } from './purchase/purchase-index/purchase-index.component';
+import { PurchaseCreateComponent } from './purchase/purchase-create/purchase-create.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -36,6 +38,10 @@ const routes: Routes = [
     {path: '', component: ProductIndexComponent},
     {path: 'create', component: ProductCreateComponent},
     {path: 'edit/:id', component: ProductEditComponent}
+  ]},
+  {path: 'purchase', children: [
+    {path: '', component: PurchaseIndexComponent},
+    {path: 'create', component: PurchaseCreateComponent},
   ]}
 ];
 

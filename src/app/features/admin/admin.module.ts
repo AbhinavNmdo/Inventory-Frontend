@@ -26,6 +26,8 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
 import { UserIndexComponent } from './user/user-index/user-index.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { PurchaseIndexComponent } from './purchase/purchase-index/purchase-index.component';
+import { PurchaseCreateComponent } from './purchase/purchase-create/purchase-create.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     ProductEditComponent,
     UserIndexComponent,
     UserCreateComponent,
-    UserEditComponent
+    UserEditComponent,
+    PurchaseIndexComponent,
+    PurchaseCreateComponent
   ],
   imports: [
     CommonModule,
