@@ -13,7 +13,9 @@
             <app-navbar-links href="product" icon="inventory_2" label="Products"></app-navbar-links>
             <app-navbar-links href="purchase" icon="shopping_cart" label="Purchases"></app-navbar-links>
             <app-navbar-links href="allotment" icon="how_to_reg" label="Allotment"></app-navbar-links>
-            <app-navbar-links class="absolute bottom-3 w-[14.5rem]" href="#" icon="logout" label="Logout" (click)="logoutUser()"></app-navbar-links>
+            <div class="absolute bottom-0 w-full left-0 p-3 bg-gray-800 shadow-gray-700">
+                <app-navbar-links href="#" icon="logout" label="Logout" (click)="logoutUser()"></app-navbar-links>
+            </div>
         </ul>
     </div>
 </aside>

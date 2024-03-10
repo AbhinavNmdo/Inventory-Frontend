@@ -39,11 +39,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="datatable?.tableData && datatable?.tableData?.data?.length == 0">
+            <tr *ngIf="datatable?.tableData && datatable?.tableData?.data?.length == 0" class="border-b-0">
                 <td class="text-center" [attr.colspan]="(datatable?.colDefs?.length ?? 0) + 2">No data found</td>
             </tr>
-            @if (datatable?.tableData?.data) {
-            <tr *ngFor="let colData of datatable?.tableData?.data; let $index = index">
+            @if (datatable?.tableData?.data;) {
+            <tr *ngFor="let colData of datatable?.tableData?.data; let $index = index" [ngClass]="{'!border-b-0': ($index + 1) == datatable?.tableData?.data?.length}">
                 <th>{{(datatable?.tableData?.from ?? 1) + $index}}</th>
                 @for (tableCols of datatable?.colDefs; track $index) {
                     <td *ngIf="!tableCols.render">{{colData | getNestedValue:(tableCols.data)}}</td>

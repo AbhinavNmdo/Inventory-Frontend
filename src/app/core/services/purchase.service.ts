@@ -40,10 +40,10 @@ export class PurchaseService {
           }, 100);
         })
       }),
-      catchError((res: ApiResponseInterface) => {
+      catchError((res) => {
         this.alertService.setAlert({
           type: AlertTypeEnum.danger,
-          text: res.msg ?? 'Something went wrong.'
+          text: res.error?.msg ?? 'Something went wrong.'
         });
 
         return of(res);

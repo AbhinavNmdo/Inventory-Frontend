@@ -17,45 +17,50 @@
       <button type="button" class="btn-success" (click)="addPurchase()">Add more</button>
     </div>
     <div class="mt-4 table-parent">
-      <table class="table" formArrayName="purchases">
+      <table class="table">
         <thead>
           <tr>
-            <th>Category</th>
-            <th>Sub-Category</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-            <th>-</th>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 20%;">Sub-Category</th>
+            <th style="width: 20%;">Product</th>
+            <th style="width: 15%;">Quantity</th>
+            <th style="width: 20%;">Amount</th>
+            <th style="width: 5%;">-</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody formArrayName="purchases">
           <tr *ngFor="let purchase of purchaseControls; let i = index;" formGroupName="{{i}}">
             <td>
-              <select class="form-select w-full">
+              <select class="form-select w-full" #categoryId (change)="getSubCategories(i, categoryId.value)">
                 <option value="">Select</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
               </select>
             </td>
             <td>
-              <select class="form-select w-full">
+              <select class="form-select w-full" #productId (change)="getProducts(i, productId.value)">
                 <option value="">Select</option>
+                <option *ngFor="let subCategory of subCategories[i]" [value]="subCategory.id">{{subCategory.name}}</option>
               </select>
             </td>
             <td>
               <select formControlName="productId" class="form-select w-full">
                 <option value="">Select</option>
+                <option *ngFor="let product of products[i]" [value]="product.id">{{product.name}}</option>
               </select>
             </td>
             <td>
               <input type="number" class="form-input" formControlName="quantity">
             </td>
             <td>
-              <input type="number" class="form-input" formControlName="amount">
+              <input type="number" class="form-input" formControlName="amount" (change)="calculateTotal()">
             </td>
             <td>
               <i *ngIf="i > 0" (click)="removePurchase(i)" class="material-icons cursor-pointer text-red-500 select-none">delete</i>
-              <span *ngIf="i == 0">-:-</span>
+              <span class="select-none" *ngIf="i == 0">-:-</span>
             </td>
           </tr>
+        </tbody>
+        <tfoot>
           <tr>
             <td></td>
             <td></td>
@@ -66,7 +71,7 @@
             </td>
             <td></td>
           </tr>
-        </tbody>
+        </tfoot>
       </table>
     </div>
   </div>

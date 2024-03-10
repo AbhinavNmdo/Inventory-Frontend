@@ -25,11 +25,6 @@ export class PurchaseIndexComponent {
     tableData: undefined,
     colDefs: [
       {
-        label: 'Product',
-        data: 'product.name',
-        orderable: true,
-      },
-      {
         label: 'Vendor',
         data: 'vendor',
         orderable: true,
@@ -41,7 +36,7 @@ export class PurchaseIndexComponent {
       },
       {
         label: 'Amount',
-        data: 'amount',
+        data: 'total_amt',
         orderable: true,
       },
     ],
