@@ -21,6 +21,7 @@ export class PurchaseCreateComponent implements OnInit {
   categories?: CategoryInterface[];
   subCategories: Array<SubCategoryInterface[]> = [[]];
   products: Array<ProductInterface[]> = [[]];
+  vendorNames?: string[];
 
   purchaseStore: FormGroup<PurchaseStoreInterface> = new FormGroup<PurchaseStoreInterface>({
     vendor: new FormControl(null, [Validators.required]),
@@ -52,6 +53,10 @@ export class PurchaseCreateComponent implements OnInit {
       }
     }).subscribe((res: ApiResponseInterface) => {
       this.categories = res.data;
+    });
+
+    this.purchaseService.getVendorNameList().subscribe((res: ApiResponseInterface) => {
+      this.vendorNames = res.data;
     });
   }
 

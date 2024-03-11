@@ -6,7 +6,10 @@
     <div class="grid grid-cols-3 gap-5">
       <div>
         <label for="vendor" class="form-label">Vendor</label>
-        <input type="text" class="form-input" formControlName="vendor">
+        <input list="vendors" type="text" class="form-input" formControlName="vendor">
+        <datalist id="vendors">
+          <option *ngFor="let vendorName of vendorNames" [value]="vendorName">
+        </datalist>
       </div>
       <div>
         <label for="bill_no" class="form-label">Bill No</label>

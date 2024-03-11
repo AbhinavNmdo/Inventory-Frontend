@@ -50,4 +50,8 @@ export class PurchaseService {
       })
     )
   }
+
+  getVendorNameList(): Observable<ApiResponseInterface> {
+    return this.http.get<ApiResponseInterface>(`${this.baseUrl}/purchase/vendors`);
+  }
 }
