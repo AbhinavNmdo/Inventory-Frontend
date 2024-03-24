@@ -15,7 +15,7 @@ export class AllotmentReturnComponent implements OnInit {
   id?: string | null;
   returnProduct: FormGroup<AllotmentLogReturn> = new FormGroup<AllotmentLogReturn>({
     returnDate: new FormControl(new Date().toISOString().substring(0, 10), [Validators.required]),
-    isDamage: new FormControl(false, [Validators.required])
+    isDamage: new FormControl(0, [Validators.required])
   });
 
   constructor(

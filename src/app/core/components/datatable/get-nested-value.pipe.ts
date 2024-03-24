@@ -10,8 +10,8 @@ export class GetNestedValuePipe implements PipeTransform {
     let current: any = value;
 
     for (const key of keys) {
-      if (current[key] === undefined) {
-        return undefined;
+      if (current[key] === undefined || current[key] === null) {
+        return '-:-';
       }
       current = current[key];
     }

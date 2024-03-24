@@ -1,0 +1,38 @@
+<h1 class="text-white text-4xl font-bold">Purchase Detail</h1>
+
+<app-alert></app-alert>
+<div class="card">
+    <div class="card-body mt-0">
+        <div class="grid grid-cols-3 gap-5 mb-10">
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Bill No.</h4>
+                <h3 class="text-lg mt-1">{{purchase?.bill_no}}</h3>
+            </div>
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Vendor</h4>
+                <h3 class="text-lg mt-1">{{purchase?.vendor}}</h3>
+            </div>
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Total Amount</h4>
+                <h3 class="text-lg mt-1">{{purchase?.total_amt}}</h3>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let purchaseInfo of purchase?.purchase_info">
+                    <td>{{purchaseInfo.product?.name}}</td>
+                    <td>{{purchaseInfo.quantity}}</td>
+                    <td>{{purchaseInfo.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

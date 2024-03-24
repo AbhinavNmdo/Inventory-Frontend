@@ -4,11 +4,7 @@ import {
   DatatableReqInterface,
   TableInterface,
 } from '../../../../core/interfaces/datatable-interface';
-import { CategoryService } from '../../../../core/services/category.service';
-import { SubCategoryService } from '../../../../core/services/sub-category.service';
 import { ProductService } from '../../../../core/services/product.service';
-import { CategoryInterface } from '../../../../core/interfaces/category-interface';
-import { SubCategoryInterface } from '../../../../core/interfaces/sub-category-interface';
 import { ApiResponseInterface } from '../../../../core/interfaces/loginuser-interface';
 import { ConfirmModalService } from '../../../../core/components/confirm-modal/confirm-modal.service';
 import { ProductInterface } from '../../../../core/interfaces/product-interface';
@@ -69,15 +65,20 @@ export class ProductIndexComponent implements OnInit {
         color: 'icon-warning',
         routerLink: 'edit/:id',
       },
+      {
+        icon: 'visibility',
+        color: 'icon-primary',
+        routerLink: 'show/:id'
+      }
     ],
   };
 
   constructor(
     private productService: ProductService,
     private confirmModalService: ConfirmModalService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getProduct(tableRequest: DatatableReqInterface): void {
     this.productService
@@ -96,7 +97,7 @@ export class ProductIndexComponent implements OnInit {
           this.getProduct(data.tableRequest)
         });
       },
-      onCancel: () => {}
+      onCancel: () => { }
     });
   }
 

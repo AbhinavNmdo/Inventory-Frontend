@@ -35,9 +35,15 @@ export interface ProductInfoInterface {
     id: number,
     product_no: string,
     product_id: number,
+    is_damage: boolean,
     product: {
         id: number,
         name: string
+    },
+    user?: {
+        id: number,
+        name: string,
+        email: string
     }
 }
 

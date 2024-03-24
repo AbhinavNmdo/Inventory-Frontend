@@ -40,6 +40,13 @@ export class PurchaseIndexComponent {
         orderable: true,
       },
     ],
+    actions: [
+      {
+        icon: 'visibility',
+        color: 'icon-primary',
+        routerLink: 'show/:id'
+      }
+    ]
   };
 
   constructor(private purchaseService: PurchaseService) {}

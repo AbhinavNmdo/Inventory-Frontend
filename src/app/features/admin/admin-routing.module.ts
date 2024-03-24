@@ -18,39 +18,53 @@ import { PurchaseCreateComponent } from './purchase/purchase-create/purchase-cre
 import { AllotmentIndexComponent } from './allotment/allotment-index/allotment-index.component';
 import { AllotmentAllotComponent } from './allotment/allotment-allot/allotment-allot.component';
 import { AllotmentReturnComponent } from './allotment/allotment-return/allotment-return.component';
+import { ProductShowComponent } from './product/product-show/product-show.component';
+import { PurchaseShowComponent } from './purchase/purchase-show/purchase-show.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'user', children: [
-    {path: '', component: UserIndexComponent},
-    {path: 'create', component: UserCreateComponent},
-    {path: 'edit/:id', component: UserEditComponent}
-  ]},
-  {path: 'category', children: [
-    {path: '', component: CategoryIndexComponent},
-    {path: 'create', component: CategoryCreateComponent},
-    {path: 'edit/:id', component: CategoryEditComponent}
-  ]},
-  {path: 'sub-category', children: [
-    {path: '', component: SubCategoryIndexComponent},
-    {path: 'create', component: SubCategoryCreateComponent},
-    {path: 'edit/:id', component: SubCategoryEditComponent}
-  ]},
-  {path: 'product', children: [
-    {path: '', component: ProductIndexComponent},
-    {path: 'create', component: ProductCreateComponent},
-    {path: 'edit/:id', component: ProductEditComponent}
-  ]},
-  {path: 'purchase', children: [
-    {path: '', component: PurchaseIndexComponent},
-    {path: 'create', component: PurchaseCreateComponent},
-  ]},
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'user', children: [
+      { path: '', component: UserIndexComponent },
+      { path: 'create', component: UserCreateComponent },
+      { path: 'edit/:id', component: UserEditComponent }
+    ]
+  },
+  {
+    path: 'category', children: [
+      { path: '', component: CategoryIndexComponent },
+      { path: 'create', component: CategoryCreateComponent },
+      { path: 'edit/:id', component: CategoryEditComponent }
+    ]
+  },
+  {
+    path: 'sub-category', children: [
+      { path: '', component: SubCategoryIndexComponent },
+      { path: 'create', component: SubCategoryCreateComponent },
+      { path: 'edit/:id', component: SubCategoryEditComponent }
+    ]
+  },
+  {
+    path: 'product', children: [
+      { path: '', component: ProductIndexComponent },
+      { path: 'create', component: ProductCreateComponent },
+      { path: 'edit/:id', component: ProductEditComponent },
+      { path: 'show/:id', component: ProductShowComponent }
+    ]
+  },
+  {
+    path: 'purchase', children: [
+      { path: '', component: PurchaseIndexComponent },
+      { path: 'create', component: PurchaseCreateComponent },
+      { path: 'show/:id', component: PurchaseShowComponent }
+    ]
+  },
   {
     path: 'allotment', children: [
-      {path: '', component: AllotmentIndexComponent},
-      {path: 'allot', component: AllotmentAllotComponent},
-      {path: 'return/:id', component: AllotmentReturnComponent}
+      { path: '', component: AllotmentIndexComponent },
+      { path: 'allot', component: AllotmentAllotComponent },
+      { path: 'return/:id', component: AllotmentReturnComponent }
     ]
   }
 ];

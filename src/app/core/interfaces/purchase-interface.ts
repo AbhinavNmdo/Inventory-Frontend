@@ -3,11 +3,10 @@ import { ProductInterface } from './product-interface';
 
 export interface PurchaseInterface {
   id: number;
-  product_id: number;
   vendor: string;
   bill_no: string;
-  amount: number;
-  product?: ProductInterface;
+  total_amt: number;
+  purchase_info?: PurchaseInfo[];
 }
 
 export interface PurchaseStoreInterface {
@@ -18,5 +17,14 @@ export interface PurchaseStoreInterface {
     amount: FormControl<number | null>;
     quantity: FormControl<number | null>;
   }>>;
-  totalAmt: FormControl<number|null>;
+  totalAmt: FormControl<number | null>;
+}
+
+export interface PurchaseInfo {
+  id: number;
+  purchase_id: number;
+  product_id: number;
+  quantity: number;
+  amount: number;
+  product?: ProductInterface;
 }

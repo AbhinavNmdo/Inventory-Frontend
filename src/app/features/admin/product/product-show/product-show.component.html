@@ -1,0 +1,29 @@
+<h1 class="text-white text-4xl font-bold">Product Info</h1>
+
+<app-alert></app-alert>
+<div class="card">
+    <div class="card-body mt-0">
+        <div class="grid grid-cols-4 gap-5 mb-10">
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Category</h4>
+                <h3 class="text-lg mt-1">{{product?.sub_category?.category?.name}}</h3>
+            </div>
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Sub-Category</h4>
+                <h3 class="text-lg mt-1">{{product?.sub_category?.name}}</h3>
+            </div>
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Product</h4>
+                <h3 class="text-lg mt-1">{{product?.name}}</h3>
+            </div>
+            <div class="card mt-0 py-2">
+                <h4 class="text-sm font-bold">Current Stock</h4>
+                <h3 class="text-lg mt-1">{{product?.stock}}</h3>
+            </div>
+        </div>
+        <app-datatable
+            [datatable]="datatable"
+            (refreshData)="getProduct($event)"
+        ></app-datatable>
+    </div>
+</div>

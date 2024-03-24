@@ -43,8 +43,14 @@ export class AllotmentAllotComponent implements OnInit {
       this.users = res.data;
     });
 
-    this.productService.productInfoList().subscribe((res: ApiResponseInterface) => {
-      this.productInfos = res.data;
+    this.productService.productInfoList({
+      isPaginate: false,
+      orderBy: {
+        column: 'product_no',
+        order: 'asc'
+      }
+    }).subscribe((res: ApiResponseInterface<Array<any>>) => {
+      this.productInfos = res.data.filter((data) => data.user_id == null);
     });
   }
 

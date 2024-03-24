@@ -19,5 +19,5 @@ export interface AllotmentLogStore {
 
 export interface AllotmentLogReturn {
     returnDate: FormControl<string | null>,
-    isDamage: FormControl<boolean | null>
+    isDamage: FormControl<number | null>
 }

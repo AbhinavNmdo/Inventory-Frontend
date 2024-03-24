@@ -31,6 +31,8 @@ import { PurchaseCreateComponent } from './purchase/purchase-create/purchase-cre
 import { AllotmentIndexComponent } from './allotment/allotment-index/allotment-index.component';
 import { AllotmentReturnComponent } from './allotment/allotment-return/allotment-return.component';
 import { AllotmentAllotComponent } from './allotment/allotment-allot/allotment-allot.component';
+import { ProductShowComponent } from './product/product-show/product-show.component';
+import { PurchaseShowComponent } from './purchase/purchase-show/purchase-show.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { AllotmentAllotComponent } from './allotment/allotment-allot/allotment-a
     PurchaseCreateComponent,
     AllotmentIndexComponent,
     AllotmentReturnComponent,
-    AllotmentAllotComponent
+    AllotmentAllotComponent,
+    ProductShowComponent,
+    PurchaseShowComponent
   ],
   imports: [
     CommonModule,
