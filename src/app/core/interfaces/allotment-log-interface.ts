@@ -11,13 +11,13 @@ export interface AllotmentLogInterface {
 }
 
 export interface AllotmentLogStore {
-    userId: FormControl<string>,
-    productInfoId: FormControl<string>,
-    allotmentDate: FormControl<Date>,
-    remark: FormControl<string>
+    userId: FormControl<string | null>,
+    productInfoId: FormControl<string | null>,
+    allotmentDate: FormControl<string | null>,
+    remark: FormControl<string | null>
 }
 
 export interface AllotmentLogReturn {
-    returnDate: FormControl<Date>,
-    isDamage: boolean
+    returnDate: FormControl<string | null>,
+    isDamage: FormControl<boolean | null>
 }

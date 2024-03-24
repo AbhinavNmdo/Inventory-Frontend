@@ -96,4 +96,8 @@ export class ProductService {
       })
     );
   }
+
+  productInfoList(): Observable<ApiResponseInterface> {
+    return this.http.get<ApiResponseInterface>(`${this.baseUrl}/product-info-list`);
+  }
 }

@@ -1,0 +1,34 @@
+<h1 class="text-white text-4xl font-bold">Allot Product</h1>
+
+<app-alert></app-alert>
+<form [formGroup]="allotProduct" class="card" (ngSubmit)="allotProductCall()">
+    <div class="card-body mt-0">
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <label for="user" class="form-label">User</label>
+                <select formControlName="userId" class="form-select w-full" id="user">
+                    <option value="">Select</option>
+                    <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                </select>
+            </div>
+            <div>
+                <label for="productInfo" class="form-label">Product No.</label>
+                <select formControlName="productInfoId" class="form-select w-full" id="productInfo">
+                    <option value="">Select</option>
+                    <option *ngFor="let productInfo of productInfos" [value]="productInfo.id">{{productInfo.product_no}} ({{productInfo.product.name}})</option>
+                </select>
+            </div>
+            <div>
+                <label for="allotmentDate" class="form-label">Allotment Date</label>
+                <input type="date" formControlName="allotmentDate" id="allotmentDate" class="form-input">
+            </div>
+            <div class="col-span-3">
+                <label for="remark" class="form-label">Remark</label>
+                <textarea formControlName="remark" id="remark" rows="2" class="form-input"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn-primary">Submit</button>
+    </div>
+</form>

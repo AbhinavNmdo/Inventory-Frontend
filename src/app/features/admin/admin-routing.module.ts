@@ -16,7 +16,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { PurchaseIndexComponent } from './purchase/purchase-index/purchase-index.component';
 import { PurchaseCreateComponent } from './purchase/purchase-create/purchase-create.component';
 import { AllotmentIndexComponent } from './allotment/allotment-index/allotment-index.component';
-import { AllotmentCreateComponent } from './allotment/allotment-create/allotment-create.component';
+import { AllotmentAllotComponent } from './allotment/allotment-allot/allotment-allot.component';
+import { AllotmentReturnComponent } from './allotment/allotment-return/allotment-return.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -48,7 +49,8 @@ const routes: Routes = [
   {
     path: 'allotment', children: [
       {path: '', component: AllotmentIndexComponent},
-      {path: 'create', component: AllotmentCreateComponent}
+      {path: 'allot', component: AllotmentAllotComponent},
+      {path: 'return/:id', component: AllotmentReturnComponent}
     ]
   }
 ];

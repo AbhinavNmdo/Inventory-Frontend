@@ -31,3 +31,13 @@ export interface ProductUpdateInterface {
     name: FormControl<string | null>,
 }
 
+export interface ProductInfoInterface {
+    id: number,
+    product_no: string,
+    product_id: number,
+    product: {
+        id: number,
+        name: string
+    }
+}
+

@@ -44,7 +44,8 @@ export interface TableInterface {
         icon: string,
         color: string,
         functionName?: any,
-        routerLink?: string
+        routerLink?: string,
+        hideIf?: Function
     }>
 }
 

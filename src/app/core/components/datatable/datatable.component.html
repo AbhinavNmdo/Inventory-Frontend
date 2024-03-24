@@ -52,17 +52,18 @@
                 <td *ngIf="datatable?.actions">
                     <div class="icon-button-group">
                         @for (action of datatable?.actions; track $index) {
-                        <button *ngIf="action.functionName" class="icon-button {{action.color}}" (click)="actionClick.emit({
-                            data: colData,
-                            functionName: action.functionName,
-                            tableRequest: datatable?.tableRequest
-                        })">
-                            <i class="material-symbols-outlined">{{action.icon}}</i>
-                        </button>
-                        <a *ngIf="action.routerLink"
-                            [routerLink]="action.routerLink.includes(':id') ? action.routerLink.replace(':id', colData.id) : action.routerLink"
-                            class="icon-button {{action.color}}"><i
-                                class="material-icons cursor-pointer">{{action.icon}}</i></a>
+                                <button *ngIf="action.functionName && (action.hideIf === undefined ? true : !action.hideIf(colData))" class="icon-button {{action.color}}" (click)="actionClick.emit({
+                                    data: colData,
+                                    functionName: action.functionName,
+                                    tableRequest: datatable?.tableRequest
+                                })">
+                                    <i class="material-symbols-outlined">{{action.icon}}</i>
+                                </button>
+
+                                <a *ngIf="action.routerLink && (action.hideIf === undefined ? true : !action.hideIf(colData))"
+                                    [routerLink]="action.routerLink.includes(':id') ? action.routerLink.replace(':id', colData.id) : action.routerLink"
+                                    class="icon-button {{action.color}}"><i
+                                        class="material-icons cursor-pointer">{{action.icon}}</i></a>
                         }
                     </div>
                 </td>
